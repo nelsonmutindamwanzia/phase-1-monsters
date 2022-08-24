@@ -10,10 +10,8 @@ document.addEventListener('DOMContentLoaded', (e) =>{
             displayMonsters(data)
             createForm()
         })  
-
     }
     fetchMonsters(page)
-  
     function displayMonsters(monster){
         console.log(monster)
         monster.forEach(element => {
@@ -26,9 +24,7 @@ document.addEventListener('DOMContentLoaded', (e) =>{
             document.querySelector('#monster-container').append(h2, h4, parag)
             
         });
-
     }
-
     function createForm(){
         let createMonster = document.getElementById('create-monster')
         createMonster.innerHTML = `
@@ -39,12 +35,10 @@ document.addEventListener('DOMContentLoaded', (e) =>{
                 <button id='button'>Create</button>
             </form>
         `
-    
         let form = document.getElementById('create-mon')
         console.log(form);
         form.addEventListener('submit', addMonster)
     }
-   
     function addMonster(e){
         e.preventDefault();
         let newMonsterObj = {
@@ -56,7 +50,6 @@ document.addEventListener('DOMContentLoaded', (e) =>{
         //displayMonsters(newMonsterObj)
         postMonster(newMonsterObj)
     }
-
     function postMonster(monster){
         fetch('http://localhost:3000/monsters', {
             method: 'POST',
@@ -69,7 +62,6 @@ document.addEventListener('DOMContentLoaded', (e) =>{
         .then(resp => resp.json())
         .then(data => data)
     }
-
     function prevNextPages(){
         document.getElementById('forward').addEventListener('click', ()=>{
             page+=1
@@ -77,7 +69,6 @@ document.addEventListener('DOMContentLoaded', (e) =>{
             fetchMonsters(page)
     
         })
-    
         document.getElementById('back').addEventListener('click', ()=>{
             page-=1
             if(page>=1){
@@ -90,5 +81,4 @@ document.addEventListener('DOMContentLoaded', (e) =>{
         })
     } 
     prevNextPages()    
-    
 })
